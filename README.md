@@ -1,2 +1,3 @@
-# llm-linear-algebra-solver
-Improving LLM Reliability in Linear Algebra via Step-Based Execution
+# Improving LLM Reliability in Linear Algebra via Step-Based Execution
+
+This project aims to improve the reliability of large language models (LLMs) in solving linear algebra problems involving multi-step computations with decimal inputs. While LLMs can explain concepts well, they often produce incorrect or imprecise numerical results. We propose a hybrid system where the LLM parses the problem into a structured format, and a custom Python-based step engine performs the computation by generating explicit intermediate steps. These verified steps are then used by the LLM to produce accurate, grounded explanations. We will evaluate this approach against a baseline LLM-only system to measure improvements in correctness, numerical precision, and reasoning consistency.

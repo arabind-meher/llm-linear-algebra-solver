@@ -1,0 +1,175 @@
+﻿=======================================================
+  OVERVIEW
+=======================================================
+
+  Total problems   : 55
+  File             : C:\Users\udayp\masters\Q7\CS-614\project\llm-linear-algebra-solver\data\dataset.json
+  File size        : 282,215 bytes
+
+=======================================================
+  RECORD IDs
+=======================================================
+
+  First 5  : ['3x3_distinct_001', '3x3_distinct_002', '3x3_distinct_003', '3x3_distinct_004', '3x3_distinct_005']
+  Last  5  : ['5x5_repeated_002', '5x5_singular_001', '5x5_singular_002', '5x5_symmetric_pd_001', '5x5_nilpotent_001']
+  Duplicate IDs : None
+
+=======================================================
+  BY MATRIX DIMENSION
+=======================================================
+
+  Count per dimension
+  ----------------------------------------
+  3×3                    28  ██████████             50.9%
+  4×4                    17  ██████                 30.9%
+  5×5                    10  ███                    18.2%
+
+=======================================================
+  BY CATEGORY
+=======================================================
+
+  Count per category
+  ----------------------------------------
+  distinct               27  █████████              49.1%
+  nilpotent               3  █                       5.5%
+  repeated               10  ███                    18.2%
+  singular               10  ███                    18.2%
+  symmetric_pd            5  █                       9.1%
+
+=======================================================
+  BY DIFFICULTY
+=======================================================
+
+  Count per difficulty level
+  ----------------------------------------
+  EASY                   32  ███████████            58.2%
+  MEDIUM                 10  ███                    18.2%
+  HARD                   13  ████                   23.6%
+
+=======================================================
+  BY DECIMAL TYPE
+=======================================================
+
+  Count per decimal precision
+  ----------------------------------------
+  1 decimal place        31  ███████████            56.4%
+  2 decimal places       16  █████                  29.1%
+  mixed                   8  ██                     14.5%
+
+=======================================================
+  BOOLEAN FLAG SUMMARY
+=======================================================
+
+  How many problems have each flag set to True
+  ----------------------------------------
+  is_singular           True= 13  False= 42
+  has_repeated          True= 13  False= 42
+  is_symmetric          True=  5  False= 50
+  is_nilpotent          True=  3  False= 52
+
+=======================================================
+  RANK AND NULLITY
+=======================================================
+
+  Rank distribution
+  ----------------------------------------
+  rank = 2                6  ██                     10.9%
+  rank = 3               26  █████████              47.3%
+  rank = 4               16  █████                  29.1%
+  rank = 5                7  ██                     12.7%
+
+  Nullity distribution
+  ----------------------------------------
+  nullity = 0            42  ███████████████        76.4%
+  nullity = 1            13  ████                   23.6%
+
+=======================================================
+  EIGENVALUE COUNT PER PROBLEM
+=======================================================
+
+  How many eigenvalues per problem (should equal dimension)
+  ----------------------------------------
+  3 eigenvalues          28  ██████████             50.9%
+  4 eigenvalues          17  ██████                 30.9%
+  5 eigenvalues          10  ███                    18.2%
+
+=======================================================
+  EIGENVECTOR COUNT PER PROBLEM
+=======================================================
+
+  How many eigenvectors per problem
+  ----------------------------------------
+  3 eigenvectors         28  ██████████             50.9%
+  4 eigenvectors         17  ██████                 30.9%
+  5 eigenvectors         10  ███                    18.2%
+
+=======================================================
+  INTERMEDIATE STEPS
+=======================================================
+
+  Number of steps per problem
+  ----------------------------------------
+  8 steps                28  ██████████             50.9%
+  10 steps               17  ██████                 30.9%
+  12 steps               10  ███                    18.2%
+
+  Total occurrences of each step type across all problems
+  ----------------------------------------
+  characteristic_polynomial_coefficients           55
+  eigenvalues                                      55
+  rref_lambda_1                                    55
+  rref_lambda_2                                    55
+  rref_lambda_3                                    55
+  rref_lambda_4                                    27
+  rref_lambda_5                                    10
+  shifted_matrix_lambda_1                          55
+  shifted_matrix_lambda_2                          55
+  shifted_matrix_lambda_3                          55
+  shifted_matrix_lambda_4                          27
+  shifted_matrix_lambda_5                          10
+
+=======================================================
+  CROSS-TAB: DIMENSION × CATEGORY
+=======================================================
+
+  category            3×3  4×4  5×5
+  --------------------------------------------------
+  distinct              15     8     4
+  nilpotent              1     1     1
+  repeated               5     3     2
+  singular               5     3     2
+  symmetric_pd           2     2     1
+
+=======================================================
+  CROSS-TAB: DIMENSION × DIFFICULTY
+=======================================================
+
+  difficulty          3×3  4×4  5×5
+  --------------------------------------------------
+  EASY                  17    10     5
+  MEDIUM                 5     3     2
+  HARD                   6     4     3
+
+=======================================================
+  SAMPLE RECORD PREVIEW (first record, no values shown)
+=======================================================
+
+  id          : 3x3_distinct_001
+  dimension   : 3
+  category    : distinct
+  difficulty  : EASY
+  decimal_type: 1
+  rank        : 3
+  nullity     : 0
+  is_singular : False
+  has_repeated: False
+  is_symmetric: False
+  is_nilpotent: False
+  num eigenvalues  : 3
+  num eigenvectors : 3
+  num steps        : 8
+  step names       : ['characteristic_polynomial_coefficients', 'eigenvalues', 'shifted_matrix_lambda_1', 'rref_lambda_1', 'shifted_matrix_lambda_2', 'rref_lambda_2', 'shifted_matrix_lambda_3', 'rref_lambda_3']
+
+=======================================================
+  END OF REPORT  |  Total problems: 55
+=======================================================

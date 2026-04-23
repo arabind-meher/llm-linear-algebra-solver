@@ -1,8 +1,10 @@
 import json
 from dataclasses import dataclass
 from typing import List, Literal, Optional
+
 import numpy as np
 import sympy as sp
+
 
 @dataclass
 class EigenProblem:
@@ -30,31 +32,45 @@ class EigenProblem:
     def __repr__(self) -> str:
         def fmt(val):
             return val if val is not None else "Not computed yet"
-        return json.dumps({
-            "dimension": self.dimension,
-            "matrix": self.matrix,
-            "coefficients": fmt(self.coefficients),
-            "eigenvalues": fmt(self.eigenvalues),
-            "shifted_matrices": fmt(self.shifted_matrices),
-            "rref_matrices": fmt(self.rref_matrices),
-            "eigenvectors": fmt(self.eigenvectors),
-        }, indent=2)
+
+        return json.dumps(
+            {
+                "dimension": self.dimension,
+                "matrix": self.matrix,
+                "coefficients": fmt(self.coefficients),
+                "eigenvalues": fmt(self.eigenvalues),
+                "shifted_matrices": fmt(self.shifted_matrices),
+                "rref_matrices": fmt(self.rref_matrices),
+                "eigenvectors": fmt(self.eigenvectors),
+            },
+            indent=2,
+        )
 
     def analyze_matrix(self) -> dict:
         A = np.array(self.matrix, dtype=float)
         rank = np.linalg.matrix_rank(A)
         eigenvalues = np.linalg.eig(A)[0].real
-        is_singular         = rank < self.dimension
+        is_singular = rank < self.dimension
         has_zero_eigenvalue = any(abs(v) < 1e-6 for v in eigenvalues)
-        has_repeated        = len(set(round(v, 4) for v in eigenvalues)) < self.dimension
-        is_symmetric        = np.allclose(A, A.T)
-        is_diagonal         = np.allclose(A, np.diag(np.diagonal(A)))
-        is_identity         = np.allclose(A, np.eye(self.dimension))
-        is_zero             = np.allclose(A, np.zeros((self.dimension, self.dimension)))
-        is_nilpotent        = np.allclose(np.linalg.matrix_power(A, self.dimension), np.zeros((self.dimension, self.dimension)))
+        has_repeated = len(set(round(v, 4) for v in eigenvalues)) < self.dimension
+        is_symmetric = np.allclose(A, A.T)
+        is_diagonal = np.allclose(A, np.diag(np.diagonal(A)))
+        is_identity = np.allclose(A, np.eye(self.dimension))
+        is_zero = np.allclose(A, np.zeros((self.dimension, self.dimension)))
+        is_nilpotent = np.allclose(
+            np.linalg.matrix_power(A, self.dimension), np.zeros((self.dimension, self.dimension))
+        )
         num_zero_eigenvalues = sum(1 for v in eigenvalues if abs(v) < 1e-6)
-        condition_number    = np.linalg.cond(A) if not is_singular else float("inf")
-        difficulty = sum([2*int(has_repeated), 2*int(is_singular), 1*int(has_zero_eigenvalue), 1*int(not is_symmetric), 1*int(is_nilpotent)])
+        condition_number = np.linalg.cond(A) if not is_singular else float("inf")
+        difficulty = sum(
+            [
+                2 * int(has_repeated),
+                2 * int(is_singular),
+                1 * int(has_zero_eigenvalue),
+                1 * int(not is_symmetric),
+                1 * int(is_nilpotent),
+            ]
+        )
         difficulty_label = "EASY" if difficulty <= 1 else "MEDIUM" if difficulty <= 3 else "HARD"
         summary = {
             "rank": int(rank),
@@ -132,9 +148,7 @@ class EigenProblem:
                     row += 1
                 # Zero out near-zero entries
                 result[np.abs(result) < tol] = 0.0
-                self.rref_matrices.append(
-                    [[round(float(result[i, j]), 6) for j in range(n)] for i in range(n)]
-                )
+                self.rref_matrices.append([[round(float(result[i, j]), 6) for j in range(n)] for i in range(n)])
 
     def calculate_eigenvectors(self) -> None:
         if self.shifted_matrices is None:
@@ -207,9 +221,9 @@ class EigenProblem:
 
 if __name__ == "__main__":
     test_cases = [
-        ("3x3 distinct",     [[1,4,7],[2,3,3],[4,9,0]],                                           3),
-        ("3x3 repeated",     [[2,-3,0],[2,-5,0],[0,0,3]],                                          3),
-        ("5x5 degenerate",   [[2,0,2,0,2],[0,3,0,3,0],[2,0,2,0,2],[0,3,0,3,0],[2,0,2,0,2]],      5),
+        ("3x3 distinct", [[1, 4, 7], [2, 3, 3], [4, 9, 0]], 3),
+        ("3x3 repeated", [[2, -3, 0], [2, -5, 0], [0, 0, 3]], 3),
+        ("5x5 degenerate", [[2, 0, 2, 0, 2], [0, 3, 0, 3, 0], [2, 0, 2, 0, 2], [0, 3, 0, 3, 0], [2, 0, 2, 0, 2]], 5),
     ]
 
     for label, matrix, dim in test_cases:

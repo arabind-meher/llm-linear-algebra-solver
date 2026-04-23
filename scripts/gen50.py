@@ -202,7 +202,7 @@ for dim, count, cat, dp_label in PLAN:
     print(f"got={got}")
 
 os.makedirs("data", exist_ok=True)
-with open(os.path.join("data", "dataset_v2.json"), "w") as f:
+with open(os.path.join("data", "dataset.json"), "w") as f:
     json.dump(dataset, f, indent=2)
 
 print(f"\nTotal: {len(dataset)}")

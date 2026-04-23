@@ -22,3 +22,9 @@ target-version = ["py313"]
 [tool.isort]
 profile = "black"
 line_length = 120
+
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+where = ["src"]

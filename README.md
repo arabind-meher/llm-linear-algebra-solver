@@ -6,4 +6,4 @@ This project aims to improve the reliability of large language models (LLMs) in 
 
 The data/ directory contains 55 eigenvalue and eigenvector problems across three matrix sizes (3×3, 4×4, 5×5) with decimal-valued entries. Each problem includes the input matrix, verified ground-truth intermediate steps (characteristic polynomial, shifted matrices, RREF), and final eigenvalues and eigenvectors. Problems are categorized by structural type (distinct, repeated, singular, symmetric positive definite, nilpotent) and difficulty level (EASY, MEDIUM, HARD).
 
-See [`data/README.md`](data/dataset.json) for full details on the dataset structure, statistics, and record format.
+See [`data/README.md`](data/README.md) for full details on the dataset structure, statistics, and record format.

@@ -1,8 +1,10 @@
 import json
 import os
 import time
+
 from dotenv import load_dotenv
 from groq import Groq
+
 from prompts.baseline import get_prompt
 
 load_dotenv(os.path.join("config", "groq.env"))

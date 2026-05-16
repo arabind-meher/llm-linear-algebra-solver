@@ -210,3 +210,14 @@ __marimo__/
 # Local Files
 .claude/
 .vscode/
+
+# Config
+config/
+
+# Temp
+test_groq.py
+groq_models.py
+openrouter_model.py
+real_data.py
+result*/
+src/baseline
